@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--知乎选择器，列表size-->
+    <dimen name="grid_expected_size">350px</dimen>
+
+
+</resources>

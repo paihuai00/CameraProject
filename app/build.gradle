@@ -39,24 +39,10 @@ dependencies {
     implementation 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 
-
-    //RxJava RxAndroid
-    implementation 'io.reactivex.rxjava2:rxjava:2.1.9'
-    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
-    //RxBinding
-    implementation 'com.jakewharton.rxbinding2:rxbinding:2.0.0'
-    //Retrofit2
-    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
-    //Retrofit 支持Rxjava 的支持库
-    implementation 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0'
-    //gson解析器
-    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
-    //okhttp + 拦截器
-    implementation 'com.squareup.okhttp3:okhttp:3.4.1'
-    implementation 'com.squareup.okhttp3:logging-interceptor:3.4.1'
-
-
+    //okhttputils
+    compile 'com.zhy:okhttputils:2.6.2'
     //知乎图片选择器
     implementation 'com.zhihu.android:matisse:0.5.0-alpha4'
-
+//添加Glide
+    implementation 'com.github.bumptech.glide:glide:3.7.0'
 }
