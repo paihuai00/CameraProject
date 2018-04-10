@@ -10,12 +10,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.zhihu.matisse.Matisse;
 import com.zhihu.matisse.MimeType;
 import com.zhihu.matisse.engine.impl.GlideEngine;
 import com.zhihu.matisse.internal.entity.CaptureStrategy;
+import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.callback.StringCallback;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -24,6 +30,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import okhttp3.Call;
 import permissions.dispatcher.NeedsPermission;
 import permissions.dispatcher.OnNeverAskAgain;
 import permissions.dispatcher.OnPermissionDenied;
@@ -34,9 +41,6 @@ import permissions.dispatcher.RuntimePermissions;
 @RuntimePermissions
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
-
-    //图片选择器，请求吗
-    private static final int CHOOSE_IMG_REQUEST = 0;
     @BindView(R.id.choose_img_btn)
     Button mChooseImgBtn;
     @BindView(R.id.show_choose_img)
@@ -45,6 +49,9 @@ public class MainActivity extends AppCompatActivity {
     //接收，选择图片返回的uri
     private List<Uri> chooseImgs = new ArrayList<>();
     private File imgFile;
+
+    //图片选择器，请求吗
+    private static final int CHOOSE_IMG_REQUEST = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,7 +101,40 @@ public class MainActivity extends AppCompatActivity {
         MainActivityPermissionsDispatcher.takePhotoWithPermissionCheck(this);
     }
 
-    //----------------------------权限处理-----------------------------------
+    //上传头像
+//    private void updateImage() {
+//        if (!NetWorkUtil.isNetworkAvailable(this)) {
+//            Toast.makeText(this, "请检查当前网络", Toast.LENGTH_SHORT).show();
+//            return;
+//        }
+//        OkHttpUtils.post()
+//                .addFile("1", "name.png", imgFile)
+//                .url(Constant.UPGATAIMAGE)
+//                .addParams("UserLoginName", PreUtil.getUserInfo().getUserLoginName())
+//                .addParams("AccessToken", PreUtil.getFormKey(this, Constant.USERTOKEN))
+//                .build()
+//                .execute(new StringCallback() {
+//                    @Override
+//                    public void onError(Call call, Exception e, int id) {
+//                        Toast.makeText(MainActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
+//                    }
+//
+//                    @Override
+//                    public void onResponse(String response, int id) {
+//                        Log.d("TAG", "------上传头像-------" + response.toString());
+//                        try {
+//                            JSONObject root = new JSONObject(response);
+//                            if (root.getString("").equals("true")) {
+//                                PreUtil.updataImage(MainActivity.this, root.getString("allFileUrl"));
+//                            }
+//                        } catch (JSONException e) {
+//                            e.printStackTrace();
+//                        }
+//                    }
+//                });
+//    }
+
+    //----------------------------6.0+权限处理-----------------------------------
     @NeedsPermission({Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE})
     void takePhoto() {
 
