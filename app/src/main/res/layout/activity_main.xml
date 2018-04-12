@@ -7,6 +7,30 @@
     android:orientation="vertical"
     tools:context="com.gzj.cameraproject.MainActivity">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="120px"
+        android:background="#5b8ae7">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="图 片 选 择"
+            android:textSize="50px"
+            android:layout_centerInParent="true"
+            android:textColor="@android:color/white"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:id="@+id/set_iv"
+            android:layout_marginRight="50px"
+            android:src="@drawable/ic_setting"/>
+
+    </RelativeLayout>
+
     <Button
         android:id="@+id/choose_img_btn"
         android:layout_width="match_parent"

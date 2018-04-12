@@ -8,4 +8,31 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="Dialog" parent="@android:style/Theme.Dialog">
+        <!--边框-->
+        <item name="android:windowFrame">@null</item>
+
+        <!--是否浮现在activity之上-->
+        <item name="android:windowIsFloating">true</item>
+
+        <!--无标题-->
+        <item name="windowNoTitle">true</item>
+
+        <!--背景透明-->
+        <item name="android:windowBackground">@android:color/transparent</item>
+
+        <!--半透明-->
+        <item name="android:windowIsTranslucent">true</item>
+
+        <!--模糊-->
+        <item name="android:backgroundDimEnabled">true</item>
+
+        <!--<item name="windowFullscreen">true</item>-->
+    </style>
+
+    <!--弹框动画-->
+    <style name="dialog_from_bottom_anim">
+        <item name="android:windowEnterAnimation">@anim/dialog_from_bottom_anim_in</item>
+        <item name="android:windowExitAnimation">@anim/dialog_from_bottom_anim_out</item>
+    </style>
 </resources>

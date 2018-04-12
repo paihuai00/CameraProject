@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_popup"
+    android:orientation="vertical"
+    android:padding="20px">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="设置"
+        android:textSize="40px" />
+
+    <EditText
+        android:id="@+id/dialog_ip_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_gray_corner"
+        android:hint="服务端Ip："
+        android:inputType="number|text"
+        android:padding="20px" />
+
+
+    <EditText
+        android:id="@+id/dialog_port_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10px"
+        android:background="@drawable/bg_gray_corner"
+        android:hint="端口："
+        android:text="8080"
+        android:inputType="number|text"
+        android:padding="20px" />
+
+    <Button
+        android:id="@+id/dialog_ensure_btn"
+        android:layout_width="300px"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/bg_orange_corner"
+        android:text="确定"
+        android:layout_marginTop="20px"
+        android:textColor="@android:color/white" />
+
+</LinearLayout>

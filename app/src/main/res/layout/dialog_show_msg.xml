@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_popup"
+    android:orientation="vertical"
+    android:padding="30dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="接收到了服务器发来的消息"
+        android:textColor="@android:color/black"
+        android:textSize="35dp" />
+
+    <TextView
+        android:id="@+id/show_msg_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/ensure_btn"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_light_blue_corner"
+            android:text="确 定"
+            android:textColor="@android:color/white" />
+
+        <!--<Button-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/cancel_btn"-->
+        <!--android:text="取消"/>-->
+
+    </LinearLayout>
+</LinearLayout>

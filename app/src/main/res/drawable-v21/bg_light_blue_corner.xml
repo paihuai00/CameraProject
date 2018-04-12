@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="#eee">
+    <!--21 以上，点击效果-->
+
+    <item>
+        <shape>
+            <solid android:color="#5670be" />
+            <corners android:radius="50px" />
+        </shape>
+    </item>
+</ripple>

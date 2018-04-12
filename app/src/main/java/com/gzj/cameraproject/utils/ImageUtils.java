@@ -1,4 +1,4 @@
-package com.gzj.cameraproject;
+package com.gzj.cameraproject.utils;
 
 import android.content.ContentResolver;
 import android.content.Context;
