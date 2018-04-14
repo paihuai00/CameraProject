@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,7 +7,7 @@
     android:orientation="vertical"
     tools:context="com.gzj.cameraproject.MainActivity">
 
-    <RelativeLayout
+    <com.zhy.autolayout.AutoRelativeLayout
         android:layout_width="match_parent"
         android:layout_height="120px"
         android:background="#5b8ae7">
@@ -29,7 +29,7 @@
             android:layout_marginRight="50px"
             android:src="@drawable/ic_setting"/>
 
-    </RelativeLayout>
+    </com.zhy.autolayout.AutoRelativeLayout>
 
     <Button
         android:id="@+id/choose_img_btn"
@@ -45,4 +45,4 @@
         android:scaleType="center"
         android:src="@drawable/ic_default" />
 
-</LinearLayout>
+</com.zhy.autolayout.AutoLinearLayout>

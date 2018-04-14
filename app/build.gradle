@@ -45,4 +45,7 @@ dependencies {
     implementation 'com.zhihu.android:matisse:0.5.0-alpha4'
 //添加Glide
     implementation 'com.github.bumptech.glide:glide:3.7.0'
+
+    //auto
+    implementation 'com.zhy:autolayout:1.4.5'
 }

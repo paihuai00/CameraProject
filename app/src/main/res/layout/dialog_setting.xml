@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="650px"
     android:layout_height="wrap_content"
     android:background="@drawable/bg_popup"
     android:orientation="vertical"
@@ -37,11 +37,11 @@
     <Button
         android:id="@+id/dialog_ensure_btn"
         android:layout_width="300px"
-        android:layout_height="wrap_content"
+        android:layout_height="120px"
         android:layout_gravity="center_horizontal"
         android:background="@drawable/bg_orange_corner"
         android:text="确定"
-        android:layout_marginTop="20px"
+        android:layout_marginTop="40px"
         android:textColor="@android:color/white" />
 
-</LinearLayout>
+</com.zhy.autolayout.AutoLinearLayout>
