@@ -10,39 +10,57 @@
     <com.zhy.autolayout.AutoRelativeLayout
         android:layout_width="match_parent"
         android:layout_height="120px"
-        android:background="#5b8ae7">
+        android:background="@drawable/bg_title_bar">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="图 片 选 择"
-            android:textSize="50px"
             android:layout_centerInParent="true"
-            android:textColor="@android:color/white"/>
+            android:text="图 片 选 择"
+            android:textColor="@android:color/white"
+            android:textSize="50px" />
 
         <ImageView
+            android:id="@+id/set_iv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:id="@+id/set_iv"
             android:layout_marginRight="50px"
-            android:src="@drawable/ic_setting"/>
+            android:src="@drawable/ic_setting" />
 
     </com.zhy.autolayout.AutoRelativeLayout>
-
-    <Button
-        android:id="@+id/choose_img_btn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="选择图片" />
 
     <ImageView
         android:id="@+id/show_choose_img"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0px"
         android:layout_gravity="center_horizontal"
+        android:layout_weight="2"
         android:scaleType="center"
         android:src="@drawable/ic_default" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/gray_color" />
+
+    <TextView
+        android:id="@+id/show_result_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:hint="图片识别结果为："
+        android:textSize="20dp" />
+
+    <Button
+        android:id="@+id/choose_img_btn"
+        android:layout_width="800px"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="20px"
+        android:background="@drawable/bg_choose_img"
+        android:text="选择图片"
+        android:textColor="@android:color/white" />
 
 </com.zhy.autolayout.AutoLinearLayout>

@@ -6,7 +6,9 @@ import android.content.pm.ActivityInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
+import android.os.MessageQueue;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
@@ -14,6 +16,7 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -42,7 +45,6 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.OnTextChanged;
 import permissions.dispatcher.NeedsPermission;
 import permissions.dispatcher.OnNeverAskAgain;
 import permissions.dispatcher.OnPermissionDenied;
@@ -59,6 +61,8 @@ public class MainActivity extends AppCompatActivity {
     ImageView mShowChooseImg;
     @BindView(R.id.set_iv)
     ImageView mSetIv;
+    @BindView(R.id.show_result_tv)
+    TextView mShowResultTv;
 
     //接收，选择图片返回的uri
     private List<Uri> chooseImgs = new ArrayList<>();
@@ -84,9 +88,13 @@ public class MainActivity extends AppCompatActivity {
             Log.d(TAG, "handleMessage: receiveMsg = " + receiveMsg);
 
             if (mShowMsgDialog != null && mTextView != null) {
-                mTextView.setText(receiveMsg);
-                mShowMsgDialog.show();
+//                mTextView.setText(receiveMsg);
+//                mShowMsgDialog.show();
+                mShowResultTv.setText(receiveMsg);
+            } else {
+                mShowResultTv.setText("返回数据有误，请重试！");
             }
+
         }
     };
 
@@ -104,6 +112,7 @@ public class MainActivity extends AppCompatActivity {
         if (getSupportActionBar() != null && getSupportActionBar().isShowing())
             getSupportActionBar().hide();
         setContentView(R.layout.activity_main);
+        initImmerseBar();
         ButterKnife.bind(this);
 
         initDialog();
@@ -138,6 +147,7 @@ public class MainActivity extends AppCompatActivity {
 
         mSetDialog = new CommonDialog.Builder(this)
                 .setContentView(R.layout.dialog_setting)
+                .setWidthAndHeight(650, ViewGroup.LayoutParams.WRAP_CONTENT)
                 .setOnClickListener(R.id.dialog_ensure_btn, new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -160,6 +170,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 })
                 .create();
+
         mIpEt = (EditText) mSetDialog.getViewById(R.id.dialog_ip_et);
         mIpEt.addTextChangedListener(new TextWatcher() {
             @Override
@@ -175,10 +186,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 Log.d(TAG, "afterTextChanged: " + s);
-                enterIpString =   s.toString() ;
+                enterIpString = s.toString();
             }
         });
         mPortEt = (EditText) mSetDialog.getViewById(R.id.dialog_port_et);
+        enterPort = Integer.valueOf(mPortEt.getText().toString().trim());
         mPortEt.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -310,7 +322,7 @@ public class MainActivity extends AppCompatActivity {
         switch (view.getId()) {
             case R.id.set_iv:
                 Log.d(TAG, "onViewClicked: 设置");
-                if (mSetDialog!=null)
+                if (mSetDialog != null)
                     mSetDialog.show();
                 break;
             case R.id.choose_img_btn:
@@ -394,4 +406,54 @@ public class MainActivity extends AppCompatActivity {
         //用户点击了不在询问，会调用
         Log.d(TAG, "takePhotoPermissionNeverAsk: ");
     }
+
+
+    //----------------------------------设置顶部渐变--------------------------------------------------------
+
+    private View statusBarView;
+
+    /**
+     * 渐变
+     * http://www.jb51.net/article/124110.htm
+     */
+    private void initImmerseBar() {
+        if (getSupportActionBar() != null) {
+            if (getSupportActionBar().isShowing()) {
+                getSupportActionBar().hide();
+            }
+        }
+        //延时加载数据.
+        Looper.myQueue().addIdleHandler(new MessageQueue.IdleHandler() {
+            @Override
+            public boolean queueIdle() {
+                if (isStatusBar()) {
+                    initStatusBar();
+                    getWindow().getDecorView().addOnLayoutChangeListener(new View.OnLayoutChangeListener() {
+                        @Override
+                        public void onLayoutChange(View v, int left, int top, int right, int bottom, int oldLeft, int oldTop, int oldRight, int oldBottom) {
+                            initStatusBar();
+                        }
+                    });
+                }
+                //只走一次
+                return false;
+            }
+        });
+    }
+
+    private void initStatusBar() {
+        if (statusBarView == null) {
+            int identifier = getResources().getIdentifier("statusBarBackground", "id", "android");
+            statusBarView = getWindow().findViewById(identifier);
+        }
+        //这里设置自己的文件
+        if (statusBarView != null) {
+            statusBarView.setBackgroundResource(R.drawable.bg_title_bar);
+        }
+    }
+
+    protected boolean isStatusBar() {
+        return true;
+    }
+
 }
